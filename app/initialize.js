@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -15,7 +15,7 @@ const Init = (props) => (
 );
 
 const AppRoutes = (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Init}>
       <Route path=":factdb" />
     </Route>

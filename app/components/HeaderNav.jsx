@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 export default class HeaderNav extends Component {
   static propTypes = { title: PropTypes.string }
@@ -20,7 +20,7 @@ export default class HeaderNav extends Component {
 
   handleClick = (event, index, value) => {
     console.log(arguments);
-    browserHistory.push(`/${value}`);
+    hashHistory.push(`/${value}`);
     this.handleClose();
   }
 
