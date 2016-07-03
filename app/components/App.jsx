@@ -10,18 +10,18 @@ export default class App extends Component {
     super(props);
     this.state =
       { factoids: []
-      , route: this.props.params.factdb
       };
+    this.getFactoids(this.props.params.factdb);
   }
 
-  componentDidMount() {
-    this.getFactoids();
+  componentWillReceiveProps(nextProps) {
+    this.getFactoids(nextProps.params.factdb);
   }
 
-  getFactoids = () => {
+  getFactoids = (factdb) => {
     request
       .get('http://dan.soupwhale.com/facts/factoids.php')
-      .query({ json: this.state.route })
+      .query({ json: factdb })
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) throw new Error(err);
@@ -32,7 +32,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <HeaderNav title={this.state.route} />
+        <HeaderNav title={this.props.params.factdb} />
         <FactTable factoids={this.state.factoids} />
       </div>
     );

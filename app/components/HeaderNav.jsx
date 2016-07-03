@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import { hashHistory } from 'react-router';
+import { Link } from 'react-router';
 
 export default class HeaderNav extends Component {
   static propTypes = { title: PropTypes.string }
@@ -10,7 +10,7 @@ export default class HeaderNav extends Component {
   constructor(props) {
     super(props);
     this.state =
-      { drawerOpen: false
+      { drawerOpen: ! this.props.title
       };
   }
 
@@ -18,9 +18,7 @@ export default class HeaderNav extends Component {
 
   handleClose = () => this.setState({ drawerOpen: false })
 
-  handleClick = (event, index, value) => {
-    console.log(arguments);
-    hashHistory.push(`/${value}`);
+  handleClick = () => {
     this.handleClose();
   }
 
