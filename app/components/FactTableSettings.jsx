@@ -1,19 +1,16 @@
 import React, { PropTypes } from 'react';
-
 import TextField from 'material-ui/TextField';
-// import IconMenu from 'material-ui/IconMenu';
-// import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-// import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import IconButton from 'material-ui/IconButton';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
-// import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
+import ContentSort from 'material-ui/svg-icons/content/sort';
+import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 
 export default function FactTableSettings(props) {
   return (
     <Toolbar style={{ maxWidth: '768px', margin: '0 auto' }}>
       <ToolbarGroup>
+        <ToolbarTitle text="Filter" />
         <TextField
           hintText="Type something..."
           value={props.filterText}
@@ -21,12 +18,20 @@ export default function FactTableSettings(props) {
         />
       </ToolbarGroup>
       <ToolbarGroup>
+        <ToolbarTitle text="Sort" />
         <DropDownMenu value={props.sortKey} onChange={props.sortChange}>
           <MenuItem value={"Time"} primaryText="Time" />
           <MenuItem value={"Name"} primaryText="Name" />
           <MenuItem value={"Nick"} primaryText="Nick" />
         </DropDownMenu>
-        <FontIcon className="muidocs-icon-custom-sort" />
+        <IconButton
+          touch={true}
+          tooltip="Reverse"
+          tooltipPosition="bottom-left"
+          onTouchTap={props.toggleReverse}
+        >
+          <ContentSort />
+        </IconButton>
       </ToolbarGroup>
     </Toolbar>
   );
@@ -37,4 +42,5 @@ FactTableSettings.propTypes =
   , filterChange: PropTypes.func
   , sortKey: PropTypes.string
   , sortChange: PropTypes.func
+  , toggleReverse: PropTypes.func
   };

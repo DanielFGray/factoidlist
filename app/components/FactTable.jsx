@@ -46,6 +46,10 @@ export default class FactTable extends Component {
     this.setState({ filterText: e.target.value });
   }
 
+  toggleReverse = () => {
+    this.setState({ reverseSort: ! this.state.reverseSort });
+  }
+
   render() {
     const re = new RegExp(this.state.filterText, 'i');
     let facts = this.props.factoids
@@ -64,6 +68,7 @@ export default class FactTable extends Component {
           filterText={this.state.filterText}
           sortKey={this.state.sortKey}
           sortChange={this.onSortingChange}
+          toggleReverse={this.toggleReverse}
         />
         <Table selectable={false} style={{ maxWidth: '768px', margin: '0 auto' }}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
