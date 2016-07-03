@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { browserHistory } from 'react-router';
 
 export default class HeaderNav extends Component {
+  static propTypes = { title: PropTypes.string }
+
   constructor(props) {
     super(props);
     this.state =
@@ -14,9 +14,15 @@ export default class HeaderNav extends Component {
       };
   }
 
-  handleToggle = () => this.setState({ drawerOpen: ! this.state.drawerOpen });
+  handleToggle = () => this.setState({ drawerOpen: ! this.state.drawerOpen })
 
-  handleClose = () => this.setState({ drawerOpen: false });
+  handleClose = () => this.setState({ drawerOpen: false })
+
+  handleClick = (event, index, value) => {
+    console.log(arguments);
+    browserHistory.push(`/${value}`);
+    this.handleClose();
+  }
 
   render() {
     return (
@@ -24,19 +30,6 @@ export default class HeaderNav extends Component {
         <AppBar
           title={this.props.title}
           onLeftIconButtonTouchTap={this.handleToggle}
-          iconElementRight={
-            <IconMenu
-              iconButtonElement={
-                <IconButton><MoreVertIcon /></IconButton>
-              }
-              targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-            >
-              <MenuItem primaryText="Refresh" />
-              <MenuItem primaryText="Help" />
-              <MenuItem primaryText="Sign out" />
-            </IconMenu>
-          }
         />
         <Drawer
           docked={false}
@@ -44,9 +37,9 @@ export default class HeaderNav extends Component {
           open={this.state.drawerOpen}
           onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
         >
-          <MenuItem onTouchTap={this.handleClose}>#rice</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>#code</MenuItem>
-          <MenuItem onTouchTap={this.handleClose}>#/g/wdg</MenuItem>
+          <MenuItem valueLink={"rice"} onTouchTap={this.handleClick}>#rice</MenuItem>
+          <MenuItem valueLink={"code"} onTouchTap={this.handleClick}>#code</MenuItem>
+          <MenuItem valueLink={"wdg"} onTouchTap={this.handleClick}>#/g/wdg</MenuItem>
         </Drawer>
       </div>
     );
