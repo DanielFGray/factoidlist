@@ -10,7 +10,6 @@ export default function FactTableSettings(props) {
   return (
     <Toolbar>
       <ToolbarGroup>
-        <ToolbarTitle text="Filter" />
         <TextField
           hintText="Type something..."
           value={props.filterText}
@@ -18,7 +17,6 @@ export default function FactTableSettings(props) {
         />
       </ToolbarGroup>
       <ToolbarGroup>
-        <ToolbarTitle text="Sort" />
         <DropDownMenu value={props.sortKey} onChange={props.sortChange}>
           <MenuItem value={"Time"} primaryText="Time" />
           <MenuItem value={"Name"} primaryText="Name" />

@@ -73,7 +73,7 @@ export default class FactTable extends Component {
         <Table selectable={false} style={{ width: '95%', margin: '0 auto' }}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
-              <TableHeaderColumn>Factoid</TableHeaderColumn>
+              <TableHeaderColumn style={{ width: '12em' }}>Factoid</TableHeaderColumn>
               <TableHeaderColumn colSpan="2">
                 Response
               </TableHeaderColumn>
