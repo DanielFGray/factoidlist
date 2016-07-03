@@ -36,11 +36,14 @@ export default class HeaderNav extends Component {
           onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
         >
           <MenuItem onTouchTap={this.handleClick} containerElement={<Link to="/rice" />}>
-            #rice</MenuItem>
+            #rice
+          </MenuItem>
           <MenuItem onTouchTap={this.handleClick} containerElement={<Link to="/code" />}>
-            #code</MenuItem>
+            #code
+          </MenuItem>
           <MenuItem onTouchTap={this.handleClick} containerElement={<Link to="/wdg" />}>
-            #/g/wdg</MenuItem>
+            #/g/wdg
+          </MenuItem>
         </Drawer>
       </div>
     );
