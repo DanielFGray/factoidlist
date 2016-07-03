@@ -24,8 +24,13 @@ export default class App extends Component {
       .query({ json: factdb })
       .set('Accept', 'application/json')
       .end((err, res) => {
-        if (err) throw new Error(err);
-        else this.setState({ factoids: res.body.response });
+        if (err) {
+          throw new Error(err);
+        } else if (res.body.response.error) {
+          this.setState({ factoids: [ { name: '' } ] });
+        } else {
+          this.setState({ factoids: res.body.response });
+        }
       });
   }
 
