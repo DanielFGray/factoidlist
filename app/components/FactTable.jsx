@@ -70,14 +70,11 @@ export default class FactTable extends Component {
           sortChange={this.onSortingChange}
           toggleReverse={this.toggleReverse}
         />
-        <Table selectable={false} style={{ maxWidth: '768px', margin: '0 auto' }}>
+        <Table selectable={false} style={{ width: '95%', margin: '0 auto' }}>
           <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
             <TableRow>
               <TableHeaderColumn>Factoid</TableHeaderColumn>
-              <TableHeaderColumn
-                colSpan="2"
-                style={{ textAlign: 'center' }}
-              >
+              <TableHeaderColumn colSpan="2">
                 Response
               </TableHeaderColumn>
             </TableRow>

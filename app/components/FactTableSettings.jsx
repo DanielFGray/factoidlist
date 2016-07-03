@@ -8,7 +8,7 @@ import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 
 export default function FactTableSettings(props) {
   return (
-    <Toolbar style={{ maxWidth: '768px', margin: '0 auto' }}>
+    <Toolbar>
       <ToolbarGroup>
         <ToolbarTitle text="Filter" />
         <TextField
