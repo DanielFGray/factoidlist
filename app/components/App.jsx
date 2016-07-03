@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import request from 'superagent';
-import { Router, Route, hashHistory } from 'react-router';
 import HeaderNav from './HeaderNav';
 import FactTable from './FactTable';
 
 export default class App extends Component {
+  static propTypes = { params: PropTypes.object }
+
   constructor(props) {
     super(props);
     this.state =
       { factoids: []
-      , route: 'rice'
+      , route: this.props.params.factdb
       };
   }
 
@@ -23,7 +24,8 @@ export default class App extends Component {
       .query({ json: this.state.route })
       .set('Accept', 'application/json')
       .end((err, res) => {
-        this.setState({ factoids: res.body.response });
+        if (err) throw new Error(err);
+        else this.setState({ factoids: res.body.response });
       });
   }
 
