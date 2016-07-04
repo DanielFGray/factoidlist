@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
 import { Link } from 'react-router';
 
 export default class HeaderNav extends Component {
@@ -43,6 +44,10 @@ export default class HeaderNav extends Component {
           </MenuItem>
           <MenuItem onTouchTap={this.handleClick} containerElement={<Link to="/wdg" />}>
             #/g/wdg
+          </MenuItem>
+          <Divider />
+          <MenuItem onTouchTap={this.handleClick} containerElement={<a href="https://gitlab.com/DanielFGray/factoidlist" target="_blank" />}>
+            source
           </MenuItem>
         </Drawer>
       </div>
