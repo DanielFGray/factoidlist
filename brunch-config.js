@@ -16,6 +16,7 @@ module.exports =
         , 'react'
         ]
       }
+    , eslint: {}
     }
   , server:
     { hostname: '0.0.0.0'
