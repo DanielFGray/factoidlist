@@ -20,7 +20,9 @@ export default function Factoid(props) {
   const time = moment(props.time);
   return (
     <TableRow key={props.name}>
-      <TableRowColumn style={{ width: '12em' }}>!{props.name}</TableRowColumn>
+      <TableRowColumn style={{ width: '12em' }}>
+        {props.name.length > 0 ? `!${props.name}` : ''}
+      </TableRowColumn>
       <TableRowColumn
         dangerouslySetInnerHTML={{ __html: marked(props.fact) }}
         style={{ height: 'unset'

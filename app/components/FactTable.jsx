@@ -16,7 +16,10 @@ const printFactoids = (propLength, facts) => {
     return (
       <TableRowColumn style={{ textAlign: 'center' }} colSpan="3">
         {propLength === 0 ?
-          (<div><CircularProgress /><br />Fetching...</div>)
+          (<div>
+            <CircularProgress size={0.5} />
+            <br />Fetching...
+          </div>)
           : 'No matches found'}
       </TableRowColumn>
     );

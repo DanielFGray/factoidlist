@@ -15,6 +15,7 @@ export default class App extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({ factoids: [] });
     this.getFactoids(nextProps.params.factdb);
   }
 
@@ -26,10 +27,10 @@ export default class App extends Component {
       .end((err, res) => {
         if (err) {
           throw new Error(err);
-        } else if (res.body.response.error) {
-          this.setState({ factoids: [ { name: '' } ] });
-        } else {
+        } else if (res.body.response.filter) {
           this.setState({ factoids: res.body.response });
+        } else if (res.body.response.error) {
+          this.setState({ factoids: [ { name: '', fact: res.body.response.error  } ] })
         }
       });
   }
