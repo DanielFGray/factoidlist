@@ -1,11 +1,14 @@
 {
-  "name": "your-app",
-  "description": "Description",
-  "author": "Your Name",
+  "name": "factoidlist",
+  "author": "DanielFGray <DanielFGray@gmail.com>",
+  "license": "GPL-3.0",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://gitlab.com/DanielFGray/factoidlist"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/DanielFGray/factoidlist/issues"
   },
   "scripts": {
     "start": "brunch watch --server",
