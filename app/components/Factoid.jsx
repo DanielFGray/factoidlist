@@ -30,7 +30,7 @@ export default function Factoid(props) {
                , whiteSpace: 'unset'
                }}
       />
-      <TableRowColumn style={{ width: '12em', fontSize: 'smaller', textAlign: 'right' }} >
+      <TableRowColumn style={{ width: '15em', fontSize: 'smaller', textAlign: 'right' }} >
         <div>{props.nick}</div>
         <div>
           <a title={time.format('llll')}>
