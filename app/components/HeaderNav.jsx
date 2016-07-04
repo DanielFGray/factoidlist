@@ -53,8 +53,10 @@ export default class HeaderNav extends Component {
             <br />It's hard to remember all of the factoids it has, so I made
             a website to list all of them for each channel.
           </p>
-          <p>It's also been a fun excuse to play with <a href="http://github.com/facebook/react">React</a> and
-            the <a href="https://github.com/callemall/material-ui">Material-UI</a> libraries.
+          <p>It's also been a fun excuse to play with the
+            {' '}<a href="http://github.com/facebook/react" target="_blank">React</a>
+            {' and '}
+            <a href="https://github.com/callemall/material-ui" target="_blank">Material-UI</a> libraries.
           </p>
         </Dialog>
         <Drawer
