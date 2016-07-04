@@ -30,7 +30,7 @@ export default class App extends Component {
         } else if (res.body.response.filter) {
           this.setState({ factoids: res.body.response });
         } else if (res.body.response.error) {
-          this.setState({ factoids: [ { name: '', fact: res.body.response.error } ] })
+          this.setState({ factoids: [ { name: '', fact: res.body.response.error } ] });
         }
       });
   }
