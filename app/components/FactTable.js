@@ -68,7 +68,6 @@ export default class FactTable extends Component {
       <div>
         <FactTableSettings
           filterChange={this.onFilterChange}
-          filterText={this.state.filterText}
           sortKey={this.state.sortKey}
           sortChange={this.onSortingChange}
           toggleReverse={this.toggleReverse}

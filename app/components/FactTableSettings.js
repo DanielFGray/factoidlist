@@ -12,7 +12,6 @@ export default function FactTableSettings(props) {
       <ToolbarGroup>
         <TextField
           hintText="Type something..."
-          value={props.filterText}
           onChange={props.filterChange}
         />
       </ToolbarGroup>
@@ -36,8 +35,7 @@ export default function FactTableSettings(props) {
 }
 
 FactTableSettings.propTypes =
-  { filterText: PropTypes.string
-  , filterChange: PropTypes.func
+  { filterChange: PropTypes.func
   , sortKey: PropTypes.string
   , sortChange: PropTypes.func
   , toggleReverse: PropTypes.func
