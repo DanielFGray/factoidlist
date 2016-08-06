@@ -1,5 +1,6 @@
 import request from 'superagent';
 
+export const CLEAR_FACTOIDS = 'CLEAR_FACTOIDS';
 export const REQUEST_FACTOIDS = 'REQUEST_FACTOIDS';
 export const RECEIVE_FACTOIDS = 'RECEIVE_FACTOIDS';
 export const RECEIVE_FACTOIDS_ERROR = 'RECEIVE_FACTOIDS_ERROR';
@@ -33,4 +34,8 @@ export function fetchFactoids(factdb) {
         }
       });
   };
+}
+
+export function clearFactoids() {
+  return { type: CLEAR_FACTOIDS };
 }

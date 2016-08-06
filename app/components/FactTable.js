@@ -11,11 +11,11 @@ import { sortBy } from 'lodash/collection';
 import FactTableSettings from './FactTableSettings';
 import Factoid from './Factoid';
 
-const printFactoids = (propLength, facts) => {
+const printFactoids = (propLength, facts, loadingFactoids) => {
   if (facts.length === 0) {
     return (
       <TableRowColumn style={{ textAlign: 'center' }} colSpan="3">
-        {propLength === 0 ?
+        {(propLength === 0 && loadingFactoids) ?
           (<div>
             <CircularProgress size={0.5} />
             <br />Fetching...
@@ -29,7 +29,10 @@ const printFactoids = (propLength, facts) => {
 };
 
 export default class FactTable extends Component {
-  static propTypes = { factoids: PropTypes.array }
+  static propTypes = {
+    factoids: PropTypes.array
+  , loadingFactoids: PropTypes.bool
+  }
 
   constructor(props) {
     super(props);
@@ -82,7 +85,7 @@ export default class FactTable extends Component {
             </TableRow>
           </TableHeader>
           <TableBody displayRowCheckbox={false} stripedRows={true}>
-            {printFactoids(this.props.factoids.length, facts)}
+            {printFactoids(this.props.factoids.length, facts, this.props.loadingFactoids)}
           </TableBody>
         </Table>
       </div>
