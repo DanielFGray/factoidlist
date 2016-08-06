@@ -1,16 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router, Route, hashHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+import configureStore from './store';
 import App from './components/App';
 
 injectTapEventPlugin();
+let store = configureStore();
 
 const Init = (props) => (
   <MuiThemeProvider>
-    <App {...props} />
+    <Provider store={store}>
+      <App {...props} />
+    </Provider>
   </MuiThemeProvider>
 );
 

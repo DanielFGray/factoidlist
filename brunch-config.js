@@ -15,6 +15,9 @@ module.exports =
         , 'stage-0'
         , 'react'
         ]
+      , plugins:
+        [ 'transform-object-rest-spread'
+        ]
       }
     , eslint: {}
     }

@@ -1,46 +1,53 @@
 import React, { Component, PropTypes } from 'react';
-import request from 'superagent';
+import { connect } from 'react-redux';
+import * as actions from '../actions/factoids';
 import HeaderNav from './HeaderNav';
 import FactTable from './FactTable';
 
-export default class App extends Component {
-  static propTypes = { params: PropTypes.object }
+class App extends Component {
+  static propTypes = {
+    params: PropTypes.object
+  , factoids: PropTypes.array
+  , factdb: PropTypes.string
+  , fetchFactoids: PropTypes.func
+  }
 
-  constructor(props) {
-    super(props);
-    this.state =
-      { factoids: []
-      };
-    this.getFactoids(this.props.params.factdb);
+  componentDidMount() {
+    if (this.props.factdb) {
+      this.props.fetchFactoids(this.props.factdb);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ factoids: [] });
-    this.getFactoids(nextProps.params.factdb);
-  }
-
-  getFactoids = (factdb) => {
-    request
-      .get('http://dan.soupwhale.com/facts/factoids.php')
-      .query({ json: factdb })
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) {
-          throw new Error(err);
-        } else if (res.body.response.filter) {
-          this.setState({ factoids: res.body.response });
-        } else if (res.body.response.error) {
-          this.setState({ factoids: [ { name: '', fact: res.body.response.error } ] });
-        }
-      });
+    if (nextProps.factdb !== this.props.factdb) {
+      this.props.fetchFactoids(nextProps.factdb);
+    }
   }
 
   render() {
     return (
       <div>
-        <HeaderNav title={this.props.params.factdb} />
-        <FactTable factoids={this.state.factoids} />
+        <HeaderNav title={this.props.factdb} />
+        <FactTable factoids={this.props.factoids} />
       </div>
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => (
+  { factoids: state.factoids.collection
+  , factdb: ownProps.params.factdb
+  }
+);
+
+const mapDispatchToProps = (dispatch) => (
+  { fetchFactoids: (factdb) => dispatch(actions.fetchFactoids(factdb))
+  }
+);
+
+const WiredApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+export default WiredApp;
