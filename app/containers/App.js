@@ -1,8 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import { connect } from 'react-redux';
 import * as actions from '../actions/factoids';
-import HeaderNav from './HeaderNav';
-import FactTable from './FactTable';
+import HeaderNav from '../components/HeaderNav';
+import FactTable from '../components/FactTable';
+
+injectTapEventPlugin();
 
 class App extends Component {
   static propTypes = {
@@ -34,10 +38,12 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <HeaderNav title={this.props.factdb} />
-        <FactTable factoids={this.props.factoids} loadingFactoids={this.props.loadingFactoids} />
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <HeaderNav title={this.props.factdb} />
+          <FactTable factoids={this.props.factoids} loadingFactoids={this.props.loadingFactoids} />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
