@@ -30,7 +30,7 @@ export function fetchFactoids(factdb) {
         } else if (res.body.response.filter) {
           dispatch(receiveFactoids(factdb, res.body.response));
         } else if (res.body.response.error) {
-          dispatch(receiveFactoidsError(factdb, res.body.error));
+          dispatch(receiveFactoidsError(factdb, res.body.response.error));
         }
       });
   };
