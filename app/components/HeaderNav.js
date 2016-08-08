@@ -52,9 +52,9 @@ export default class HeaderNav extends Component {
             a website to list all of them for each channel.
           </p>
           <p>It's also been a fun excuse to play with the
-            {' '}<a href="http://github.com/facebook/react" target="_blank">React</a>
+            {' '}<a href="http://github.com/facebook/react" target="_blank" rel="noopener noreferrer">React</a>
             {' and '}
-            <a href="https://github.com/callemall/material-ui" target="_blank">Material-UI</a> libraries.
+            <a href="https://github.com/callemall/material-ui" target="_blank" rel="noopener noreferrer">Material-UI</a> libraries.
           </p>
         </Dialog>
         <Drawer
@@ -73,7 +73,7 @@ export default class HeaderNav extends Component {
             #/g/wdg
           </MenuItem>
           <Divider />
-          <MenuItem onTouchTap={this.drawerClose} containerElement={<a href="https://gitlab.com/DanielFGray/factoidlist" target="_blank" />}>
+          <MenuItem onTouchTap={this.drawerClose} containerElement={<a href="https://gitlab.com/DanielFGray/factoidlist" target="_blank" rel="noopener noreferrer" />}>
             source
           </MenuItem>
           <MenuItem onTouchTap={this.dialogOpen}>
