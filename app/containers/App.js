@@ -9,15 +9,6 @@ import FactTable from '../components/FactTable';
 injectTapEventPlugin();
 
 class App extends Component {
-  static propTypes = {
-    params: PropTypes.object
-  , clearFactoids: PropTypes.func
-  , factoids: PropTypes.array
-  , factdb: PropTypes.string
-  , fetchFactoids: PropTypes.func
-  , loadingFactoids: PropTypes.bool
-  }
-
   componentDidMount() {
     if (this.props.factdb) {
       this.props.fetchFactoids(this.props.factdb);
@@ -47,6 +38,16 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes =
+  { params: PropTypes.object
+  , clearFactoids: PropTypes.func
+  , factoids: PropTypes.array
+  , factdb: PropTypes.string
+  , fetchFactoids: PropTypes.func
+  , loadingFactoids: PropTypes.bool
+  };
+
 
 const mapStateToProps = (state, ownProps) => (
   { factoids: state.factoids.collection

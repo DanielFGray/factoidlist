@@ -29,11 +29,6 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
 };
 
 export default class FactTable extends Component {
-  static propTypes = {
-    factoids: PropTypes.array
-  , loadingFactoids: PropTypes.bool
-  }
-
   constructor(props) {
     super(props);
     this.state =
@@ -92,3 +87,8 @@ export default class FactTable extends Component {
     );
   }
 }
+
+FactTable.propTypes =
+  { factoids: PropTypes.array
+  , loadingFactoids: PropTypes.bool
+  };

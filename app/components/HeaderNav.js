@@ -8,8 +8,6 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
 
 export default class HeaderNav extends Component {
-  static propTypes = { title: PropTypes.string }
-
   constructor(props) {
     super(props);
     this.state =
@@ -86,3 +84,7 @@ export default class HeaderNav extends Component {
     );
   }
 }
+
+HeaderNav.propTypes =
+  { title: PropTypes.string
+  };
