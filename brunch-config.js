@@ -20,6 +20,14 @@ module.exports =
         ]
       }
     , eslint: {}
+    , uglify:
+      { mangle: false
+      , compress:
+        { global_defs:
+          { DEBUG: false
+          }
+        }
+      }
     }
   , server:
     { hostname: '0.0.0.0'

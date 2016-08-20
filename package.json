@@ -49,6 +49,6 @@
     "eslint-plugin-react": "^5.2.2",
     "hmr-brunch": "^0.1.1",
     "javascript-brunch": "^2.0.0",
-    "uglify-js-brunch": "^2.0.0"
+    "uglify-js-brunch": "^2.0.1"
   }
 }
