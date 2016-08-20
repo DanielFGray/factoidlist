@@ -21,7 +21,7 @@ export function fetchFactoids(factdb) {
   return dispatch => {
     dispatch(requestFactoids(factdb));
     request
-      .get('http://dan.soupwhale.com/facts/factoids.php')
+      .get('http://dan.soupwhale.com/facts/api/')
       .query({ json: factdb })
       .set('Accept', 'application/json')
       .end((err, res) => {
