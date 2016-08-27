@@ -21,8 +21,8 @@ export function fetchFactoids(factdb) {
   return dispatch => {
     dispatch(requestFactoids(factdb));
     request
-      .get('http://dan.soupwhale.com/facts/api/')
-      .query({ json: factdb })
+      .get('http://dan.soupwhale.com/facts/api/v2/')
+      .query({ db: factdb })
       .set('Accept', 'application/json')
       .end((err, res) => {
         if (err) {
