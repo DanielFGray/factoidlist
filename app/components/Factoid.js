@@ -31,6 +31,14 @@ export default function Factoid(props) {
                }}
       >
         <div dangerouslySetInnerHTML={{ __html: fact }} />
+        {props.aliases ?
+          <div style={{ fontSize: 'smaller'
+                      , fontStyle: 'italic'
+                      , marginTop: '5px' }}
+          >
+            alias{ props.aliases.length > 1 ? 'es' : null }: {props.aliases.join(', ')}
+          </div>
+        : null }
       </TableRowColumn>
       <TableRowColumn style={{ width: '15em', fontSize: 'smaller', textAlign: 'right' }} >
         <div>{props.nick}</div>
@@ -49,4 +57,5 @@ Factoid.propTypes =
   , name: PropTypes.string
   , nick: PropTypes.string
   , time: PropTypes.number
+  , aliases: PropTypes.array
   };
