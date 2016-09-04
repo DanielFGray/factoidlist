@@ -16,7 +16,7 @@ function linkify(inputText) {
 
 export default function Factoid(props) {
   const time = moment(props.time);
-  const fact = linkify(props.fact).replace(/`([^`]+)`/, '<code>$1</code>');
+  const fact = linkify(props.fact).replace(/`([^`]+)`/g, '<code>$1</code>');
 
   return (
     <TableRow key={props.name}>
