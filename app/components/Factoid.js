@@ -9,7 +9,7 @@ function linkify(inputText) {
   let replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
   const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
   replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
-  const replacePattern3 = /(([a-zA-Z0-9\-\_\.])+@[a-zA-Z\_]+?(\.[a-zA-Z]{2,6})+)/gim;
+  const replacePattern3 = /(([a-zA-Z0-9\-_.])+@[a-zA-Z_]+?(\.[a-zA-Z]{2,6})+)/gim;
   replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
   return replacedText;
 }
@@ -32,9 +32,10 @@ export default function Factoid(props) {
       >
         <div dangerouslySetInnerHTML={{ __html: fact }} />
         {props.aliases ?
-          <div style={{ fontSize: 'smaller'
-                      , fontStyle: 'italic'
-                      , marginTop: '5px' }}
+          <div
+            style={{ fontSize: 'smaller'
+                   , fontStyle: 'italic'
+                   , marginTop: '5px' }}
           >
             alias{ props.aliases.length > 1 ? 'es' : null }: {props.aliases.join(', ')}
           </div>

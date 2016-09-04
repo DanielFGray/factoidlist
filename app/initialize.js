@@ -6,7 +6,7 @@ import { Router, Route, hashHistory } from 'react-router';
 import configureStore from './store';
 import App from './containers/App';
 
-let store = configureStore();
+const store = configureStore();
 
 const Init = (props) => (
   <Provider store={store}>
