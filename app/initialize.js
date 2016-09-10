@@ -6,6 +6,8 @@ import { Router, Route, hashHistory } from 'react-router';
 import configureStore from './store';
 import App from './containers/App';
 
+import './styles/application.css';
+
 const store = configureStore();
 
 const Init = (props) => (
