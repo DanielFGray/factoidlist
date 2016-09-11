@@ -11,7 +11,7 @@
     "url": "https://gitlab.com/DanielFGray/factoidlist/issues"
   },
   "scripts": {
-    "prod": "webpack --progress",
+    "prod": "webpack -p --progress",
     "lint": "eslint app"
   },
   "dependencies": {
