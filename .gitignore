@@ -18,9 +18,10 @@
 .tmproj
 nbproject
 Thumbs.db
+tags
 
-# NPM packages folder.
+# NPM packages folder
 node_modules/
 
-# Brunch output folder.
+# output folder
 public/

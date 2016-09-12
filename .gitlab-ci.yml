@@ -13,6 +13,6 @@ pages:
     - npm run prod
   artifacts:
     paths:
-      - dist
+      - public
   only:
     - master
