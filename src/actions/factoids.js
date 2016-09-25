@@ -18,7 +18,7 @@ function receiveFactoidsError(factdb, error) {
 }
 
 export function fetchFactoids(factdb) {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(requestFactoids(factdb));
     request
       .get('http://dan.soupwhale.com/facts/api/v2/')

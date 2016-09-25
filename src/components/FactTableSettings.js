@@ -17,9 +17,9 @@ export default function FactTableSettings(props) {
       </ToolbarGroup>
       <ToolbarGroup>
         <DropDownMenu value={props.sortKey} onChange={props.sortChange}>
-          <MenuItem value={"Time"} primaryText="Time" />
-          <MenuItem value={"Name"} primaryText="Name" />
-          <MenuItem value={"Nick"} primaryText="Nick" />
+          <MenuItem value={'Time'} primaryText="Time" />
+          <MenuItem value={'Name'} primaryText="Name" />
+          <MenuItem value={'Nick'} primaryText="Nick" />
         </DropDownMenu>
         <IconButton
           touch={true}

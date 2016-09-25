@@ -10,7 +10,7 @@ import './styles/application.css';
 
 const store = configureStore();
 
-const Init = (props) => (
+const Init = props => (
   <Provider store={store}>
     <App {...props} />
   </Provider>

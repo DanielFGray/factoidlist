@@ -40,8 +40,7 @@ class App extends Component {
 }
 
 App.propTypes =
-  { params: PropTypes.object
-  , clearFactoids: PropTypes.func
+  { clearFactoids: PropTypes.func
   , factoids: PropTypes.array
   , factdb: PropTypes.string
   , fetchFactoids: PropTypes.func
@@ -56,8 +55,8 @@ const mapStateToProps = (state, ownProps) => (
   }
 );
 
-const mapDispatchToProps = (dispatch) => (
-  { fetchFactoids: (factdb) => dispatch(actions.fetchFactoids(factdb))
+const mapDispatchToProps = dispatch => (
+  { fetchFactoids: factdb => dispatch(actions.fetchFactoids(factdb))
   , clearFactoids: () => dispatch(actions.clearFactoids())
   }
 );

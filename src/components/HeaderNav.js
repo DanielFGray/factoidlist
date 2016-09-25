@@ -61,7 +61,7 @@ export default class HeaderNav extends Component {
           docked={false}
           width={200}
           open={this.state.drawerOpen || ! this.props.title}
-          onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
+          onRequestChange={drawerOpen => this.setState({ drawerOpen })}
         >
           <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="rice" />}>
             #rice
