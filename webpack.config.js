@@ -34,14 +34,9 @@ module.exports =
     [ new HtmlWebpackPlugin(
       { inject: 'body'
       , title: 'factoid lists'
-        , template: './src/assets/index.html'
+      , template: './src/assets/index.html'
+      , xhtml: true
       })
-    , new webpack.optimize.UglifyJsPlugin(
-        { compress:
-          { warnings: false
-          }
-        }
-      )
     , new ExtractTextPlugin('styles.css')
     , new webpack.DefinePlugin(
       { 'process.env':
@@ -49,5 +44,11 @@ module.exports =
         }
       })
     , new webpack.optimize.DedupePlugin()
+    , new webpack.optimize.UglifyJsPlugin(
+        { compress:
+          { warnings: false
+          }
+        }
+      )
     ]
   };
