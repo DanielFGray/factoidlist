@@ -6,6 +6,7 @@ cache:
 
 before_script:
   - npm install
+  - npm prune
 
 pages:
   stage: deploy
