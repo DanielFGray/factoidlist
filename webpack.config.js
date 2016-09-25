@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports =
   { resolve:
@@ -12,13 +13,20 @@ module.exports =
     , filename: 'bundle.js'
     }
   , module:
-    { loaders:
+    { preLoaders:
       [ { test: /.jsx?$/
         , exclude: /node_modules/
-        , loader: 'babel-loader'
+        , loader: 'eslint'
+        }
+      ]
+    , loaders:
+      [ { test: /.jsx?$/
+        , exclude: /node_modules/
+        , loader: 'babel'
         }
       , { test:   /\.css$/
         , loader: 'style!css'
+        , loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         }
       ]
     }
@@ -34,5 +42,12 @@ module.exports =
           }
         }
       )
+    , new ExtractTextPlugin('styles.css')
+    , new webpack.DefinePlugin(
+      { 'process.env':
+        { 'NODE_ENV': JSON.stringify('production')
+        }
+      })
+    , new webpack.optimize.DedupePlugin()
     ]
   };
