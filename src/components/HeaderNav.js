@@ -63,17 +63,17 @@ export default class HeaderNav extends Component {
           open={this.state.drawerOpen || ! this.props.title}
           onRequestChange={(drawerOpen) => this.setState({ drawerOpen })}
         >
-          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="/rice" />}>
+          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="rice" />}>
             #rice
           </MenuItem>
-          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="/code" />}>
+          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="code" />}>
             #code
           </MenuItem>
-          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="/wdg" />}>
+          <MenuItem onTouchTap={this.drawerClose} containerElement={<Link to="wdg" />}>
             #/g/wdg
           </MenuItem>
           <Divider />
-          <MenuItem onTouchTap={this.drawerClose} containerElement={<a href="https://gitlab.com/DanielFGray/factoidlist" target="_blank" rel="noopener noreferrer" />}>
+          <MenuItem onTouchTap={this.drawerClose} href="https://gitlab.com/DanielFGray/factoidlist">
             source
           </MenuItem>
           <MenuItem onTouchTap={this.dialogOpen}>
