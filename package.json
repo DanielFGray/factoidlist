@@ -12,7 +12,8 @@
   },
   "scripts": {
     "prod": "webpack -p --progress",
-    "lint": "eslint src"
+    "start": "webpack-dashboard -- webpack-dev-server --config webpack-dev.config.js",
+    "lint": "(eslint src) || true"
   },
   "dependencies": {
     "lodash": "^4.16.1",
@@ -44,7 +45,11 @@
     "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.22.0",
+    "npm-install-webpack-plugin": "^4.0.4",
+    "react-hot-loader": "^3.0.0-beta.5",
     "style-loader": "^0.13.1",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dashboard": "^0.2.0",
+    "webpack-dev-server": "^1.16.1"
   }
 }
