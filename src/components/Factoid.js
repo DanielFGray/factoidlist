@@ -16,8 +16,7 @@ function linkify(inputText) {
 
 export default function Factoid(props) {
   const time = moment(props.time);
-  let fact = props.fact
-    .replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
+  let fact = props.fact.replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
     .replace(/`([^`]+)`/g, '<code>$1</code>');
   fact = linkify(fact);
 
