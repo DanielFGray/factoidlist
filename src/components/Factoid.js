@@ -56,9 +56,9 @@ export default function Factoid(props) {
 }
 
 Factoid.propTypes =
-  { fact: PropTypes.string
-  , name: PropTypes.string
-  , nick: PropTypes.string
-  , time: PropTypes.number
+  { fact: PropTypes.string.isRequired
+  , name: PropTypes.string.isRequired
+  , nick: PropTypes.string.isRequired
+  , time: PropTypes.number.isRequired
   , aliases: PropTypes.array
   };
