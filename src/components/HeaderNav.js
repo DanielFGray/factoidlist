@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
@@ -10,6 +11,10 @@ import { Link } from 'react-router'
 export default class HeaderNav extends Component {
   static propTypes = {
     title: PropTypes.string,
+  }
+
+  static defaultProps = {
+    title: '',
   }
 
   state = {
@@ -46,7 +51,7 @@ export default class HeaderNav extends Component {
             /> ]}
           modal={false}
           open={this.state.dialogOpen}
-          onRequestClose={this.handleClose}
+          onRequestClose={this.dialogClose}
         >
           <p>
             I made an IRC chat bot that responds to certain keywords in some IRC

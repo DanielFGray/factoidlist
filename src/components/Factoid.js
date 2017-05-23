@@ -1,3 +1,4 @@
+// @flow
 import React, { PropTypes } from 'react'
 import {
   TableRow,
@@ -16,7 +17,7 @@ function linkify(inputText) {
   return replacedText
 }
 
-export default function Factoid(props) {
+const Factoid = (props) => {
   const time = moment(props.time)
   let fact = props.fact.replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
@@ -66,3 +67,9 @@ Factoid.propTypes = {
   time: PropTypes.number.isRequired,
   aliases: PropTypes.arrayOf(PropTypes.string),
 }
+
+Factoid.defaultProps = {
+  aliases: [],
+}
+
+export default Factoid

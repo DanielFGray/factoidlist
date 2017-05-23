@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, PropTypes } from 'react'
 import {
   Table,
@@ -28,7 +29,7 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
   return facts.map(row => <Factoid key={row.name} {...row} />)
 }
 
-export default class FactTable extends Component {
+class FactTable extends Component {
   static propTypes = {
     factoids: PropTypes.arrayOf(PropTypes.shape({
       fact: PropTypes.string.isRequired,
@@ -47,10 +48,10 @@ export default class FactTable extends Component {
     filterText: '',
   };
 
-  onSortingChange = (event, index, value) =>
+  onSortingChange = (event: SyntheticEvent, index: number, value: string) =>
     this.setState({ sortKey: value });
 
-  onFilterChange = e =>
+  onFilterChange = (e: SyntheticInputEvent) =>
     this.setState({ filterText: e.target.value });
 
   toggleReverse = () =>
@@ -92,3 +93,5 @@ export default class FactTable extends Component {
     )
   }
 }
+
+export default FactTable

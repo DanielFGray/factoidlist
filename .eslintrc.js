@@ -1,6 +1,12 @@
 module.exports = {
-  extends: 'airbnb',
   parser: 'babel-eslint',
+  extends: [
+    'airbnb',
+    'plugin:flowtype/recommended',
+  ],
+  plugins: [
+    'flowtype',
+  ],
   env: {
     browser: true,
   },
@@ -10,7 +16,7 @@ module.exports = {
     'react/jsx-boolean-value': 0,
     'array-bracket-spacing': [ 'error', 'always' ],
     'no-nested-ternary': 0,
-    'react/jsx-filename-extension': [ 'error', { 'extensions': [ '.js', '.jsx' ] } ],
+    'react/jsx-filename-extension': [ 'error', { extensions: [ '.js', '.jsx' ] } ],
     'react/forbid-prop-types': 'warn',
     'react/require-default-props': 'warn',
     'jsx-a11y/anchor-has-content': 0,
