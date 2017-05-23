@@ -1,20 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, hashHistory } from 'react-router';
+import React from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router, Route, hashHistory } from 'react-router'
 
-import configureStore from './store';
-import App from './containers/App';
+import configureStore from './store'
+import App from './containers/App'
 
-import './styles/application.css';
+import './styles/application.css'
 
-const store = configureStore();
+const store = configureStore()
 
 const Init = props => (
   <Provider store={store}>
     <App {...props} />
   </Provider>
-);
+)
 
 const AppRoutes = (
   <Router history={hashHistory}>
@@ -22,8 +22,8 @@ const AppRoutes = (
       <Route path=":factdb" />
     </Route>
   </Router>
-);
+)
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(AppRoutes, document.querySelector('#app'));
-});
+  render(AppRoutes, document.querySelector('#app'))
+})

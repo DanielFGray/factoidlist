@@ -5,6 +5,7 @@ module.exports = {
     browser: true,
   },
   rules: {
+    semi: [ 'error', 'never' ],
     'no-console': 0,
     'react/jsx-boolean-value': 0,
     'array-bracket-spacing': [ 'error', 'always' ],
@@ -23,4 +24,4 @@ module.exports = {
       },
     ],
   },
-};
+}

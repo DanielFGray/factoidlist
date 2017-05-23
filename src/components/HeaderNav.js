@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import Divider from 'material-ui/Divider';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import AppBar from 'material-ui/AppBar'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
+import Divider from 'material-ui/Divider'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import { Link } from 'react-router'
 
 export default class HeaderNav extends Component {
   static propTypes = {
@@ -85,6 +85,6 @@ export default class HeaderNav extends Component {
           </MenuItem>
         </Drawer>
       </div>
-    );
+    )
   }
 }

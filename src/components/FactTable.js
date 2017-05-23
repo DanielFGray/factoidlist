@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
 import {
   Table,
   TableBody,
@@ -6,11 +6,11 @@ import {
   TableHeaderColumn,
   TableRow,
   TableRowColumn,
-} from 'material-ui/Table';
-import CircularProgress from 'material-ui/CircularProgress';
-import { sortBy } from 'lodash/collection';
-import FactTableSettings from './FactTableSettings';
-import Factoid from './Factoid';
+} from 'material-ui/Table'
+import CircularProgress from 'material-ui/CircularProgress'
+import { sortBy } from 'lodash/collection'
+import FactTableSettings from './FactTableSettings'
+import Factoid from './Factoid'
 
 const printFactoids = (propLength, facts, loadingFactoids) => {
   if (facts.length === 0) {
@@ -23,10 +23,10 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
           </div>)
           : 'No matches found'}
       </TableRowColumn>
-    );
+    )
   }
-  return facts.map(row => <Factoid key={row.name} {...row} />);
-};
+  return facts.map(row => <Factoid key={row.name} {...row} />)
+}
 
 export default class FactTable extends Component {
   static propTypes = {
@@ -57,14 +57,14 @@ export default class FactTable extends Component {
     this.setState({ reverseSort: ! this.state.reverseSort });
 
   render() {
-    const re = new RegExp(this.state.filterText, 'i');
+    const re = new RegExp(this.state.filterText, 'i')
     let facts = this.props.factoids
-      .filter(f => re.test(f.name) || re.test(f.fact));
+      .filter(f => re.test(f.name) || re.test(f.fact))
 
-    facts = sortBy(facts, this.state.sortKey.toLowerCase());
+    facts = sortBy(facts, this.state.sortKey.toLowerCase())
 
     if (this.state.reverseSort) {
-      facts = facts.reverse();
+      facts = facts.reverse()
     }
 
     return (
@@ -89,6 +89,6 @@ export default class FactTable extends Component {
           </TableBody>
         </Table>
       </div>
-    );
+    )
   }
 }

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
-const path = require('path');
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const babelOpts = {
   test: /\.jsx?$/,
@@ -12,7 +12,7 @@ const babelOpts = {
     'babel-loader',
     'eslint-loader',
   ],
-};
+}
 
 const cssOpts = {
   test: /\.css$/,
@@ -22,7 +22,7 @@ const cssOpts = {
       'css-loader',
     ],
   }),
-};
+}
 
 const pluginList = [
   new webpack.optimize.CommonsChunkPlugin({
@@ -41,13 +41,13 @@ const pluginList = [
     appMountId: 'app',
     devServer: '',
   }),
-];
+]
 
 const stats = {
   chunks: false,
   modules: false,
   children: false,
-};
+}
 
 module.exports = {
   entry: './src/initialize',
@@ -71,4 +71,4 @@ module.exports = {
     stats,
   },
   stats,
-};
+}

@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
-import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
-import ContentSort from 'material-ui/svg-icons/content/sort';
-import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar';
+import React, { PropTypes } from 'react'
+import TextField from 'material-ui/TextField'
+import IconButton from 'material-ui/IconButton'
+import MenuItem from 'material-ui/MenuItem'
+import DropDownMenu from 'material-ui/DropDownMenu'
+import ContentSort from 'material-ui/svg-icons/content/sort'
+import { Toolbar, ToolbarGroup } from 'material-ui/Toolbar'
 
 export default function FactTableSettings(props) {
   return (
@@ -31,7 +31,7 @@ export default function FactTableSettings(props) {
         </IconButton>
       </ToolbarGroup>
     </Toolbar>
-  );
+  )
 }
 
 FactTableSettings.propTypes = {
@@ -39,4 +39,4 @@ FactTableSettings.propTypes = {
   sortKey: PropTypes.string,
   sortChange: PropTypes.func,
   toggleReverse: PropTypes.func,
-};
+}
