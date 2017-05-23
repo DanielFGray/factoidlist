@@ -34,9 +34,9 @@ export default function FactTableSettings(props) {
   );
 }
 
-FactTableSettings.propTypes =
-  { filterChange: PropTypes.func
-  , sortKey: PropTypes.string
-  , sortChange: PropTypes.func
-  , toggleReverse: PropTypes.func
-  };
+FactTableSettings.propTypes = {
+  filterChange: PropTypes.func,
+  sortKey: PropTypes.string,
+  sortChange: PropTypes.func,
+  toggleReverse: PropTypes.func,
+};

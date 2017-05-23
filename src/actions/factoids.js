@@ -5,17 +5,21 @@ export const REQUEST_FACTOIDS = 'REQUEST_FACTOIDS';
 export const RECEIVE_FACTOIDS = 'RECEIVE_FACTOIDS';
 export const RECEIVE_FACTOIDS_ERROR = 'RECEIVE_FACTOIDS_ERROR';
 
-function requestFactoids(factdb) {
-  return { type: REQUEST_FACTOIDS, factdb };
-}
+const requestFactoids = factdb => ({
+  type: REQUEST_FACTOIDS, factdb,
+});
 
-function receiveFactoids(factdb, factoids) {
-  return { type: RECEIVE_FACTOIDS, factdb, factoids };
-}
+const receiveFactoids = (factdb, factoids) => ({
+  type: RECEIVE_FACTOIDS,
+  factdb,
+  factoids,
+});
 
-function receiveFactoidsError(factdb, error) {
-  return { type: RECEIVE_FACTOIDS_ERROR, factdb, error };
-}
+const receiveFactoidsError = (factdb, error) => ({
+  type: RECEIVE_FACTOIDS_ERROR,
+  factdb,
+  error,
+});
 
 export function fetchFactoids(factdb) {
   return (dispatch) => {

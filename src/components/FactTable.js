@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { Table
-       , TableBody
-       , TableHeader
-       , TableHeaderColumn
-       , TableRow
-       , TableRowColumn
-       } from 'material-ui/Table';
+import {
+  Table,
+  TableBody,
+  TableHeader,
+  TableHeaderColumn,
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 import CircularProgress from 'material-ui/CircularProgress';
 import { sortBy } from 'lodash/collection';
 import FactTableSettings from './FactTableSettings';
@@ -23,33 +24,26 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
           : 'No matches found'}
       </TableRowColumn>
     );
-  } else {
-    return facts.map(row => <Factoid key={row.name} {...row} />);
   }
+  return facts.map(row => <Factoid key={row.name} {...row} />);
 };
 
 export default class FactTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state =
-      { showSettings: false
-      , sortKey: 'Time'
-      , reverseSort: true
-      , filterText: ''
-      };
-  }
+  state = {
+    showSettings: false,
+    sortKey: 'Time',
+    reverseSort: true,
+    filterText: '',
+  };
 
-  onSortingChange = (event, index, value) => {
+  onSortingChange = (event, index, value) =>
     this.setState({ sortKey: value });
-  }
 
-  onFilterChange = (e) => {
+  onFilterChange = e =>
     this.setState({ filterText: e.target.value });
-  }
 
-  toggleReverse = () => {
+  toggleReverse = () =>
     this.setState({ reverseSort: ! this.state.reverseSort });
-  }
 
   render() {
     const re = new RegExp(this.state.filterText, 'i');
@@ -88,7 +82,13 @@ export default class FactTable extends Component {
   }
 }
 
-FactTable.propTypes =
-  { factoids: PropTypes.array
-  , loadingFactoids: PropTypes.bool
-  };
+FactTable.propTypes = {
+  factoids: PropTypes.array(PropTypes.shape({
+    fact: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    nick: PropTypes.string.isRequired,
+    time: PropTypes.number.isRequired,
+    aliases: PropTypes.arrayOf(PropTypes.string),
+  })),
+  loadingFactoids: PropTypes.bool,
+};

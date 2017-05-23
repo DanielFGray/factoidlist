@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react';
-import { TableRow
-       , TableRowColumn } from 'material-ui/Table';
+import {
+  TableRow,
+  TableRowColumn,
+} from 'material-ui/Table';
 import moment from 'moment';
 
 function linkify(inputText) {
   // http://stackoverflow.com/a/3890175
-  const replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gim;
+  const replacePattern1 = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/gim;
   let replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
-  const replacePattern2 = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+  const replacePattern2 = /(^|[^/])(www\.[\S]+(\b|$))/gim;
   replacedText = replacedText.replace(replacePattern2, '$1<a href="http://$2" target="_blank">$2</a>');
   const replacePattern3 = /(([a-zA-Z0-9\-_.])+@[a-zA-Z_]+?(\.[a-zA-Z]{2,6})+)/gim;
   replacedText = replacedText.replace(replacePattern3, '<a href="mailto:$1">$1</a>');
@@ -26,18 +28,21 @@ export default function Factoid(props) {
         {props.name.length > 0 ? `!${props.name}` : ''}
       </TableRowColumn>
       <TableRowColumn
-        style={{ height: 'unset'
-               , textOverflow: 'unset'
-               , whiteSpace: 'unset'
-               , padding: '5px'
-               }}
+        style={{
+          height: 'unset',
+          textOverflow: 'unset',
+          whiteSpace: 'unset',
+          padding: '5px',
+        }}
       >
         <div dangerouslySetInnerHTML={{ __html: fact }} />
         {props.aliases &&
           <div
-            style={{ fontSize: 'smaller'
-                   , fontStyle: 'italic'
-                   , marginTop: '5px' }}
+            style={{
+              fontSize: 'smaller',
+              fontStyle: 'italic',
+              marginTop: '5px',
+            }}
           >
             alias{props.aliases.length > 1 && 'es'}: {props.aliases.join(', ')}
           </div>}
@@ -54,10 +59,10 @@ export default function Factoid(props) {
   );
 }
 
-Factoid.propTypes =
-  { fact: PropTypes.string.isRequired
-  , name: PropTypes.string.isRequired
-  , nick: PropTypes.string.isRequired
-  , time: PropTypes.number.isRequired
-  , aliases: PropTypes.array
-  };
+Factoid.propTypes = {
+  fact: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  nick: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
+  aliases: PropTypes.arrayOf(PropTypes.string),
+};

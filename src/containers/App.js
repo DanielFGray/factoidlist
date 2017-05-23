@@ -39,27 +39,24 @@ class App extends Component {
   }
 }
 
-App.propTypes =
-  { clearFactoids: PropTypes.func
-  , factoids: PropTypes.array
-  , factdb: PropTypes.string
-  , fetchFactoids: PropTypes.func
-  , loadingFactoids: PropTypes.bool
-  };
+App.propTypes = {
+  clearFactoids: PropTypes.func,
+  factoids: PropTypes.array,
+  factdb: PropTypes.string,
+  fetchFactoids: PropTypes.func,
+  loadingFactoids: PropTypes.bool,
+};
 
+const mapStateToProps = (state, ownProps) => ({
+  factoids: state.factoids.collection,
+  factdb: ownProps.params.factdb,
+  loadingFactoids: state.factoids.loading,
+});
 
-const mapStateToProps = (state, ownProps) => (
-  { factoids: state.factoids.collection
-  , factdb: ownProps.params.factdb
-  , loadingFactoids: state.factoids.loading
-  }
-);
-
-const mapDispatchToProps = dispatch => (
-  { fetchFactoids: factdb => dispatch(actions.fetchFactoids(factdb))
-  , clearFactoids: () => dispatch(actions.clearFactoids())
-  }
-);
+const mapDispatchToProps = dispatch => ({
+  fetchFactoids: factdb => dispatch(actions.fetchFactoids(factdb)),
+  clearFactoids: () => dispatch(actions.clearFactoids()),
+});
 
 const WiredApp = connect(
   mapStateToProps,

@@ -6,13 +6,10 @@
   },
   "rules": {
     "no-console": 0,
-    "comma-dangle": 0,
-    "comma-style": [ 1, "first" ],
     "react/jsx-boolean-value": 0,
-    "array-bracket-spacing": 0,
+    "array-bracket-spacing": [ "error", "always" ],
     "no-nested-ternary": 0,
-    "no-else-return": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [ 1, { "extensions": [".js", ".jsx"] } ],
     "react/forbid-prop-types": 1,
     "jsx-a11y/anchor-has-content": 0,
     "space-unary-ops": [
