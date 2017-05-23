@@ -9,6 +9,20 @@ import FactTable from '../components/FactTable';
 injectTapEventPlugin();
 
 class App extends Component {
+  static propTypes = {
+    clearFactoids: PropTypes.func.isRequired,
+    factoids: PropTypes.arrayOf(PropTypes.shape({
+      fact: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      nick: PropTypes.string.isRequired,
+      time: PropTypes.number.isRequired,
+      aliases: PropTypes.arrayOf(PropTypes.string),
+    })),
+    factdb: PropTypes.string.isRequired,
+    fetchFactoids: PropTypes.func.isRequired,
+    loadingFactoids: PropTypes.bool.isRequired,
+  }
+
   componentDidMount() {
     if (this.props.factdb) {
       this.props.fetchFactoids(this.props.factdb);
@@ -39,14 +53,6 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  clearFactoids: PropTypes.func,
-  factoids: PropTypes.array,
-  factdb: PropTypes.string,
-  fetchFactoids: PropTypes.func,
-  loadingFactoids: PropTypes.bool,
-};
-
 const mapStateToProps = (state, ownProps) => ({
   factoids: state.factoids.collection,
   factdb: ownProps.params.factdb,
@@ -58,9 +64,6 @@ const mapDispatchToProps = dispatch => ({
   clearFactoids: () => dispatch(actions.clearFactoids()),
 });
 
-const WiredApp = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+const WiredApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default WiredApp;

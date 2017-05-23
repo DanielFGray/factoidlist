@@ -8,10 +8,14 @@ import FlatButton from 'material-ui/FlatButton';
 import { Link } from 'react-router';
 
 export default class HeaderNav extends Component {
+  static propTypes = {
+    title: PropTypes.string,
+  }
+
   state = {
     drawerOpen: ! this.props.title,
     dialogOpen: false,
-  };
+  }
 
   drawerToggle = () =>
     this.setState({ drawerOpen: ! this.state.drawerOpen });
@@ -84,7 +88,3 @@ export default class HeaderNav extends Component {
     );
   }
 }
-
-HeaderNav.propTypes = {
-  title: PropTypes.string,
-};

@@ -29,6 +29,17 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
 };
 
 export default class FactTable extends Component {
+  static propTypes = {
+    factoids: PropTypes.arrayOf(PropTypes.shape({
+      fact: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      nick: PropTypes.string.isRequired,
+      time: PropTypes.number.isRequired,
+      aliases: PropTypes.arrayOf(PropTypes.string),
+    })),
+    loadingFactoids: PropTypes.bool,
+  }
+
   state = {
     showSettings: false,
     sortKey: 'Time',
@@ -81,14 +92,3 @@ export default class FactTable extends Component {
     );
   }
 }
-
-FactTable.propTypes = {
-  factoids: PropTypes.array(PropTypes.shape({
-    fact: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    nick: PropTypes.string.isRequired,
-    time: PropTypes.number.isRequired,
-    aliases: PropTypes.arrayOf(PropTypes.string),
-  })),
-  loadingFactoids: PropTypes.bool,
-};
