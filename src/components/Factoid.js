@@ -4,7 +4,7 @@ import {
   TableRow,
   TableRowColumn,
 } from 'material-ui/Table'
-import moment from 'moment'
+import ago from 's-ago'
 
 function linkify(inputText) {
   // http://stackoverflow.com/a/3890175
@@ -18,7 +18,7 @@ function linkify(inputText) {
 }
 
 const Factoid = (props) => {
-  const time = moment(props.time)
+  const time = new Date(props.time)
   let fact = props.fact.replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
     .replace(/`([^`]+)`/g, '<code>$1</code>')
   fact = linkify(fact)
@@ -37,7 +37,7 @@ const Factoid = (props) => {
         }}
       >
         <div dangerouslySetInnerHTML={{ __html: fact }} />
-        {props.aliases &&
+        {props.aliases.length > 0 &&
           <div
             style={{
               fontSize: 'smaller',
@@ -51,8 +51,8 @@ const Factoid = (props) => {
       <TableRowColumn style={{ width: '15em', fontSize: 'smaller', textAlign: 'right' }} >
         <div>{props.nick}</div>
         <div>
-          <a title={time.format('llll')}>
-            {time.fromNow()}
+          <a title={time.toLocaleString()}>
+            {ago(time)}
           </a>
         </div>
       </TableRowColumn>
