@@ -8,8 +8,7 @@
     "production": {
       "plugins": [
         ["lodash", { "id": [
-          "lodash",
-          "material-ui"
+          "lodash"
         ]}]
       ]
     }
