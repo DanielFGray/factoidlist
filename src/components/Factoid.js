@@ -1,5 +1,5 @@
 // @flow
-import React, { PropTypes } from 'react'
+import React from 'react'
 import {
   TableRow,
   TableRowColumn,
@@ -17,16 +17,21 @@ function linkify(inputText) {
   return replacedText
 }
 
-const Factoid = (props) => {
-  const time = new Date(props.time)
-  let fact = props.fact.replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
-    .replace(/`([^`]+)`/g, '<code>$1</code>')
-  fact = linkify(fact)
-
+const Factoid = ({ fact, name, nick, time, aliases = [] }: {
+  fact: string,
+  name: string,
+  nick: string,
+  time: number,
+  aliases: Array<string>,
+}) => {
+  const date = new Date(time)
+  const body = linkify(fact
+    .replace(/[\u00A0-\u9999<>&]/gim, i => `&#${i.charCodeAt(0)};`)
+    .replace(/`([^`]+)`/g, '<code>$1</code>'))
   return (
-    <TableRow key={props.name}>
+    <TableRow key={name}>
       <TableRowColumn style={{ width: '12em' }}>
-        {props.name.length > 0 ? `!${props.name}` : ''}
+        {name.length > 0 && `!${name}`}
       </TableRowColumn>
       <TableRowColumn
         style={{
@@ -36,8 +41,8 @@ const Factoid = (props) => {
           padding: '5px',
         }}
       >
-        <div dangerouslySetInnerHTML={{ __html: fact }} />
-        {props.aliases.length > 0 &&
+        <div dangerouslySetInnerHTML={{ __html: body }} />
+        {aliases.length > 0 &&
           <div
             style={{
               fontSize: 'smaller',
@@ -45,31 +50,19 @@ const Factoid = (props) => {
               marginTop: '5px',
             }}
           >
-            alias{props.aliases.length > 1 && 'es'}: {props.aliases.join(', ')}
+            alias{aliases.length > 1 && 'es'}: {aliases.join(', ')}
           </div>}
       </TableRowColumn>
       <TableRowColumn style={{ width: '15em', fontSize: 'smaller', textAlign: 'right' }} >
-        <div>{props.nick}</div>
+        <div>{nick}</div>
         <div>
-          <a title={time.toLocaleString()}>
-            {ago(time)}
+          <a title={date.toLocaleString()}>
+            {ago(date)}
           </a>
         </div>
       </TableRowColumn>
     </TableRow>
   )
-}
-
-Factoid.propTypes = {
-  fact: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  nick: PropTypes.string.isRequired,
-  time: PropTypes.number.isRequired,
-  aliases: PropTypes.arrayOf(PropTypes.string),
-}
-
-Factoid.defaultProps = {
-  aliases: [],
 }
 
 export default Factoid

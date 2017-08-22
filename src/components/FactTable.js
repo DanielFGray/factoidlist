@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import {
   Table,
   TableBody,
@@ -30,15 +30,9 @@ const printFactoids = (propLength, facts, loadingFactoids) => {
 }
 
 class FactTable extends Component {
-  static propTypes = {
-    factoids: PropTypes.arrayOf(PropTypes.shape({
-      fact: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      nick: PropTypes.string.isRequired,
-      time: PropTypes.number.isRequired,
-      aliases: PropTypes.arrayOf(PropTypes.string),
-    })),
-    loadingFactoids: PropTypes.bool,
+  props: {
+    factoids: Array<Object>,
+    loadingFactoids: boolean,
   }
 
   state = {
@@ -58,7 +52,7 @@ class FactTable extends Component {
     this.setState({ reverseSort: ! this.state.reverseSort });
 
   render() {
-    const re = new RegExp(this.state.filterText, 'i')
+    const re = new RegExp(this.state.filterText.replace(' ', '.*'), 'i')
     let facts = this.props.factoids
       .filter(f => re.test(f.name) || re.test(f.fact))
 

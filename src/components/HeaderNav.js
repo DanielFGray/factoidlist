@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
@@ -9,8 +9,8 @@ import FlatButton from 'material-ui/FlatButton'
 import { Link } from 'react-router'
 
 export default class HeaderNav extends Component {
-  static propTypes = {
-    title: PropTypes.string,
+  props: {
+    title: string,
   }
 
   static defaultProps = {
