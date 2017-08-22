@@ -37,8 +37,9 @@ const pluginList = [
   new HtmlWebpackPlugin({
     template: 'src/assets/index.ejs',
     inject: false,
-    title: 'title',
+    title: 'Factoid List',
     appMountId: 'app',
+    mobile: true,
     devServer: '',
   }),
 ]
