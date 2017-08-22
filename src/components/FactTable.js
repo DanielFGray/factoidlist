@@ -9,7 +9,13 @@ import {
   TableRowColumn,
 } from 'material-ui/Table'
 import CircularProgress from 'material-ui/CircularProgress'
-import { sortBy } from 'lodash/collection'
+import {
+  filter,
+  pipe,
+  prop,
+  reverse,
+  sortBy,
+} from 'ramda'
 import FactTableSettings from './FactTableSettings'
 import Factoid from './Factoid'
 
@@ -53,14 +59,11 @@ class FactTable extends Component {
 
   render() {
     const re = new RegExp(this.state.filterText.replace(' ', '.*'), 'i')
-    let facts = this.props.factoids
-      .filter(f => re.test(f.name) || re.test(f.fact))
-
-    facts = sortBy(facts, this.state.sortKey.toLowerCase())
-
-    if (this.state.reverseSort) {
-      facts = facts.reverse()
-    }
+    const facts = pipe(
+      filter(f => re.test(f.name) || re.test(f.fact)),
+      sortBy(prop(this.state.sortKey.toLowerCase())),
+      f => (this.state.reverseSort ? reverse(f) : f),
+    )(this.props.factoids)
 
     return (
       <div>

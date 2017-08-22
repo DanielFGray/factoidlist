@@ -8,7 +8,7 @@
     "production": {
       "plugins": [
         ["lodash", { "id": [
-          "lodash"
+          "ramda"
         ]}]
       ]
     }
